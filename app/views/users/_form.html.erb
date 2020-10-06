@@ -23,7 +23,13 @@
 
   <div class="field">
     <%= form.label :gender %>
-    <%= form.number_field :gender %>
+    <%= form.radio_button :gender, :man %>
+    <%= form.label :gender_man, '男性' %>
+    <%= form.radio_button :gender, :woman %>
+    <%= form.label :gender_woman, '女性' %>
+    <%= form.radio_button :gender, :other %>
+    <%= form.label :gender_other, 'その他' %>
+
   </div>
 
   <div class="actions">
