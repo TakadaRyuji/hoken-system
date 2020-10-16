@@ -58,3 +58,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # enum
 gem 'enum'
 gem 'enum_help'
+
+# Divese
+gem 'devise'
