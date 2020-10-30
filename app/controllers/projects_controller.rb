@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :verify_user, only: [:edit, :update, :destroy]
 
   # GET /projects
   # GET /projects.json
@@ -24,7 +25,7 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create
-    @project = Project.new(project_params)
+    @project = current_user.projects.new(project_params)
 
     respond_to do |format|
       if @project.save
@@ -70,5 +71,11 @@ class ProjectsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def project_params
       params.require(:project).permit(:name, :description)
+    end
+
+    def verify_user
+      if @project.user_id != current_user
+        return redirect_to projects_url, notice: '不正なアクセスです' 
+      end
     end
 end

@@ -8,4 +8,6 @@ class User < ApplicationRecord
     woman: 1,
     other: 2
   }
+
+  has_many :projects
 end
